@@ -1,0 +1,3 @@
+[submodule "Submodules/PlainOAuth"]
+	path = Submodules/PlainOAuth
+	url = https://github.com/jaanus/PlainOAuth.git

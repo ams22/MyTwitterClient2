@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E3877F1C1A333B08000573FF /* Base64Transcoder.c in Sources */ = {isa = PBXBuildFile; fileRef = E3877EF51A333B08000573FF /* Base64Transcoder.c */; settings = {COMPILER_FLAGS = "-w"; }; };
+		E3877F1D1A333B08000573FF /* hmac.c in Sources */ = {isa = PBXBuildFile; fileRef = E3877EF71A333B08000573FF /* hmac.c */; settings = {COMPILER_FLAGS = "-w"; }; };
+		E3877F1E1A333B08000573FF /* OAHMAC_SHA1SignatureProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = E3877EFA1A333B08000573FF /* OAHMAC_SHA1SignatureProvider.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		E3877F1F1A333B08000573FF /* sha1.c in Sources */ = {isa = PBXBuildFile; fileRef = E3877EFC1A333B08000573FF /* sha1.c */; settings = {COMPILER_FLAGS = "-w"; }; };
+		E3877F201A333B08000573FF /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = E3877EFF1A333B08000573FF /* NSString+URLEncoding.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		E3877F211A333B08000573FF /* OAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = E3877F011A333B08000573FF /* OAuth.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
 		E3BA465A1A32EE3D00047E61 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E3BA46591A32EE3D00047E61 /* main.m */; };
 		E3BA465D1A32EE3D00047E61 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E3BA465C1A32EE3D00047E61 /* AppDelegate.m */; };
 		E3BA46631A32EE3D00047E61 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3BA46611A32EE3D00047E61 /* Main.storyboard */; };
@@ -35,6 +41,20 @@
 		12327006E00FEE1C26AEDB64 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		362B4246287275EDA8CE542A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A41F2F2F9CAB1B5FDB3ED6A5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E338CACD1A333BF100DDB2CD /* OAuthTwitterCallbacks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthTwitterCallbacks.h; sourceTree = "<group>"; };
+		E3877EF51A333B08000573FF /* Base64Transcoder.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Base64Transcoder.c; sourceTree = "<group>"; };
+		E3877EF61A333B08000573FF /* Base64Transcoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64Transcoder.h; sourceTree = "<group>"; };
+		E3877EF71A333B08000573FF /* hmac.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = hmac.c; sourceTree = "<group>"; };
+		E3877EF81A333B08000573FF /* hmac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hmac.h; sourceTree = "<group>"; };
+		E3877EF91A333B08000573FF /* OAHMAC_SHA1SignatureProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAHMAC_SHA1SignatureProvider.h; sourceTree = "<group>"; };
+		E3877EFA1A333B08000573FF /* OAHMAC_SHA1SignatureProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAHMAC_SHA1SignatureProvider.m; sourceTree = "<group>"; };
+		E3877EFB1A333B08000573FF /* OASignatureProviding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OASignatureProviding.h; sourceTree = "<group>"; };
+		E3877EFC1A333B08000573FF /* sha1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sha1.c; sourceTree = "<group>"; };
+		E3877EFD1A333B08000573FF /* sha1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sha1.h; sourceTree = "<group>"; };
+		E3877EFE1A333B08000573FF /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+URLEncoding.h"; path = "Guts/NSString+URLEncoding.h"; sourceTree = "<group>"; };
+		E3877EFF1A333B08000573FF /* NSString+URLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+URLEncoding.m"; path = "Guts/NSString+URLEncoding.m"; sourceTree = "<group>"; };
+		E3877F001A333B08000573FF /* OAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OAuth.h; path = Guts/OAuth.h; sourceTree = "<group>"; };
+		E3877F011A333B08000573FF /* OAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OAuth.m; path = Guts/OAuth.m; sourceTree = "<group>"; };
 		E3BA46541A32EE3D00047E61 /* MyTwitterClient2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyTwitterClient2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3BA46581A32EE3D00047E61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E3BA46591A32EE3D00047E61 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -94,6 +114,53 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E338CACB1A333BF100DDB2CD /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				E338CACD1A333BF100DDB2CD /* OAuthTwitterCallbacks.h */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		E3877EF11A333AD4000573FF /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				E3877EF21A333B08000573FF /* OAuth */,
+			);
+			name = Vendor;
+			sourceTree = "<group>";
+		};
+		E3877EF21A333B08000573FF /* OAuth */ = {
+			isa = PBXGroup;
+			children = (
+				E3877EF41A333B08000573FF /* Crypto */,
+				E3877EFE1A333B08000573FF /* NSString+URLEncoding.h */,
+				E3877EFF1A333B08000573FF /* NSString+URLEncoding.m */,
+				E3877F001A333B08000573FF /* OAuth.h */,
+				E3877F011A333B08000573FF /* OAuth.m */,
+				E338CACB1A333BF100DDB2CD /* Protocols */,
+			);
+			name = OAuth;
+			path = Submodules/PlainOAuth/OAuth;
+			sourceTree = "<group>";
+		};
+		E3877EF41A333B08000573FF /* Crypto */ = {
+			isa = PBXGroup;
+			children = (
+				E3877EF51A333B08000573FF /* Base64Transcoder.c */,
+				E3877EF61A333B08000573FF /* Base64Transcoder.h */,
+				E3877EF71A333B08000573FF /* hmac.c */,
+				E3877EF81A333B08000573FF /* hmac.h */,
+				E3877EF91A333B08000573FF /* OAHMAC_SHA1SignatureProvider.h */,
+				E3877EFA1A333B08000573FF /* OAHMAC_SHA1SignatureProvider.m */,
+				E3877EFB1A333B08000573FF /* OASignatureProviding.h */,
+				E3877EFC1A333B08000573FF /* sha1.c */,
+				E3877EFD1A333B08000573FF /* sha1.h */,
+			);
+			name = Crypto;
+			path = Guts/Crypto;
+			sourceTree = "<group>";
+		};
 		E3BA464B1A32EE3D00047E61 = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +168,7 @@
 				E3BA46701A32EE3D00047E61 /* MyTwitterClient2Tests */,
 				E3BA46551A32EE3D00047E61 /* Products */,
 				65C9137525FC792B2D1E2C0A /* Pods */,
+				E3877EF11A333AD4000573FF /* Vendor */,
 				A5DF7E17599C1D9CE0F3E02C /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -307,12 +375,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3877F1F1A333B08000573FF /* sha1.c in Sources */,
+				E3877F1D1A333B08000573FF /* hmac.c in Sources */,
 				E3BA465D1A32EE3D00047E61 /* AppDelegate.m in Sources */,
+				E3877F1E1A333B08000573FF /* OAHMAC_SHA1SignatureProvider.m in Sources */,
 				E3BA467F1A32F44C00047E61 /* NIMTweetsViewController.m in Sources */,
 				E3BA468D1A3307BB00047E61 /* NIMUser.m in Sources */,
 				E3BA468A1A33073600047E61 /* NIMTweet.m in Sources */,
 				E3BA46821A32F4D300047E61 /* NIMSettingsViewController.m in Sources */,
 				E3BA46861A32FC4600047E61 /* NIMTwitterHTTPClient.m in Sources */,
+				E3877F201A333B08000573FF /* NSString+URLEncoding.m in Sources */,
+				E3877F211A333B08000573FF /* OAuth.m in Sources */,
+				E3877F1C1A333B08000573FF /* Base64Transcoder.c in Sources */,
 				E3BA465A1A32EE3D00047E61 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

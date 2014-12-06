@@ -9,7 +9,17 @@
 #import "NIMTwitterHTTPClient.h"
 #import "NIMTweet.h"
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wobjc-interface-ivars"
+#pragma clang diagnostic ignored "-Wauto-import"
+#import "OAuth.h"
+#pragma clang diagnostic pop
+
 static NSString *const NIMTwitterHTTPClientBaseURLString = @"https://api.twitter.com/1.1/";
+static NSString *const NIMTwitterHTTPClientConsumerKey = @"83ZNM9vmZiMOo9EfMlM4fU9CG";
+static NSString *const NIMTwitterHTTPClientConsumerSecret = @"LusD3WSbsilUIfvJ8Kt6XDe5NXP2krPsyaOr7LpnrZo7dtKx3e";
+static NSString *const NIMTwitterHTTPClientAccessToken = @"47601564-Q3n72hpbHyOYgtBWuN4E0i04IHCQ3xhdx3MYcQ6CU";
+static NSString *const NIMTwitterHTTPClientAccessTokenSecret = @"LQ4OkOX49k3PFGCBB6LFknAqbXpqUfgwMplPiDMoY5GFZ";
 
 @implementation NIMTwitterHTTPClient
 
@@ -19,10 +29,18 @@ static NSString *const NIMTwitterHTTPClientBaseURLString = @"https://api.twitter
     NSString *URLString = [[[NSURL URLWithString:NIMTwitterHTTPClientBaseURLString]
                             URLByAppendingPathComponent:@"search/tweets.json"]
                            absoluteString];
+    NSDictionary *parameters = @{ @"q" : @"iOS",
+                                  @"result_type" : @"recent" };
     NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:@"%@?%@", URLString, @"q=iOS&result_type=recent"]];
+
+    OAuth *oAuth = [[OAuth alloc] initWithConsumerKey:NIMTwitterHTTPClientConsumerKey andConsumerSecret:NIMTwitterHTTPClientConsumerSecret];
+    oAuth.oauth_token = NIMTwitterHTTPClientAccessToken;
+    oAuth.oauth_token_secret = NIMTwitterHTTPClientAccessTokenSecret;
+    oAuth.oauth_token_authorized = YES;
+    NSString *OAuthHeaderValue = [oAuth oAuthHeaderForMethod:@"GET" andUrl:URLString andParams:parameters];
+
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
-#warning генерация токена
-    [request setValue:@"OAuth oauth_consumer_key=\"83ZNM9vmZiMOo9EfMlM4fU9CG\", oauth_nonce=\"c70eb68a760294553b42a9891e61e9e9\", oauth_signature=\"Gph0832yHU1z2bajCH%2Fz1EWUX6M%3D\", oauth_signature_method=\"HMAC-SHA1\", oauth_timestamp=\"1417858837\", oauth_version=\"1.0\"" forHTTPHeaderField:@"Authorization"];
+    [request setValue:OAuthHeaderValue forHTTPHeaderField:@"Authorization"];
 
     NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *taskError) {
 #warning проверка ошибок
