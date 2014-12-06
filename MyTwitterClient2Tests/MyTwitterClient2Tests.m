@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Nikolay Morev. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import <XCTest/XCTest.h>
+@import UIKit;
+@import XCTest;
 
 @interface MyTwitterClient2Tests : XCTestCase
 
