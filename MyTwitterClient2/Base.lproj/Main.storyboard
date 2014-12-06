@@ -25,16 +25,53 @@
         <scene sceneID="IMT-zi-otc">
             <objects>
                 <tableViewController title="Tweets" id="7oI-mu-UP0" customClass="NIMTweetsViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="R5f-6w-iPt">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="R5f-6w-iPt">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TweetCell" id="EIZ-nd-Al6">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="NIMTweetCell" rowHeight="88" id="EIZ-nd-Al6" customClass="NIMTweetCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EIZ-nd-Al6" id="tiu-kK-6GS">
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HJR-5P-99y" userLabel="Avatar Image View">
+                                            <rect key="frame" x="8" y="8" width="48" height="48"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="48" id="DEj-OY-tYh"/>
+                                                <constraint firstAttribute="height" constant="48" id="y8u-dj-rUF"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="528" translatesAutoresizingMaskIntoConstraints="NO" id="3Mp-aV-rgG" userLabel="Username Label">
+                                            <rect key="frame" x="64" y="8" width="528" height="16"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Label" lineBreakMode="wordWrap" numberOfLines="99" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" preferredMaxLayoutWidth="528" translatesAutoresizingMaskIntoConstraints="NO" id="XQs-v3-JeB" userLabel="Text Label">
+                                            <rect key="frame" x="64" y="32" width="528" height="47.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="XQs-v3-JeB" firstAttribute="top" secondItem="3Mp-aV-rgG" secondAttribute="bottom" constant="8" symbolic="YES" id="1fZ-dc-Zn8"/>
+                                        <constraint firstAttribute="trailing" secondItem="3Mp-aV-rgG" secondAttribute="trailing" constant="8" id="4r6-Qr-9Jg"/>
+                                        <constraint firstAttribute="bottom" secondItem="XQs-v3-JeB" secondAttribute="bottom" constant="8" id="Ad9-0i-oxF"/>
+                                        <constraint firstItem="3Mp-aV-rgG" firstAttribute="leading" secondItem="HJR-5P-99y" secondAttribute="trailing" constant="8" symbolic="YES" id="TIt-mZ-9ge"/>
+                                        <constraint firstItem="HJR-5P-99y" firstAttribute="top" secondItem="3Mp-aV-rgG" secondAttribute="top" id="Yp3-F9-xEN"/>
+                                        <constraint firstAttribute="trailing" secondItem="XQs-v3-JeB" secondAttribute="trailing" constant="8" id="hsU-KV-GfX"/>
+                                        <constraint firstItem="XQs-v3-JeB" firstAttribute="leading" secondItem="HJR-5P-99y" secondAttribute="trailing" constant="8" symbolic="YES" id="kzk-5w-hOO"/>
+                                        <constraint firstItem="HJR-5P-99y" firstAttribute="top" secondItem="tiu-kK-6GS" secondAttribute="top" constant="8" id="sO0-ov-peu"/>
+                                        <constraint firstItem="HJR-5P-99y" firstAttribute="leading" secondItem="tiu-kK-6GS" secondAttribute="leading" constant="8" id="xoH-fn-hEu"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="avatarImageView" destination="HJR-5P-99y" id="mvo-2C-XXd"/>
+                                    <outlet property="tweetTextLabel" destination="XQs-v3-JeB" id="4Pj-fj-HEU"/>
+                                    <outlet property="usernameLabel" destination="3Mp-aV-rgG" id="uNe-JO-3pT"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E3877EE31A3311F7000573FF /* NIMTweetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E3877EE21A3311F7000573FF /* NIMTweetCell.m */; };
 		E3877F1C1A333B08000573FF /* Base64Transcoder.c in Sources */ = {isa = PBXBuildFile; fileRef = E3877EF51A333B08000573FF /* Base64Transcoder.c */; settings = {COMPILER_FLAGS = "-w"; }; };
 		E3877F1D1A333B08000573FF /* hmac.c in Sources */ = {isa = PBXBuildFile; fileRef = E3877EF71A333B08000573FF /* hmac.c */; settings = {COMPILER_FLAGS = "-w"; }; };
 		E3877F1E1A333B08000573FF /* OAHMAC_SHA1SignatureProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = E3877EFA1A333B08000573FF /* OAHMAC_SHA1SignatureProvider.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
@@ -42,6 +43,8 @@
 		362B4246287275EDA8CE542A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A41F2F2F9CAB1B5FDB3ED6A5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E338CACD1A333BF100DDB2CD /* OAuthTwitterCallbacks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthTwitterCallbacks.h; sourceTree = "<group>"; };
+		E3877EE11A3311F7000573FF /* NIMTweetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIMTweetCell.h; sourceTree = "<group>"; };
+		E3877EE21A3311F7000573FF /* NIMTweetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIMTweetCell.m; sourceTree = "<group>"; };
 		E3877EF51A333B08000573FF /* Base64Transcoder.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Base64Transcoder.c; sourceTree = "<group>"; };
 		E3877EF61A333B08000573FF /* Base64Transcoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64Transcoder.h; sourceTree = "<group>"; };
 		E3877EF71A333B08000573FF /* hmac.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = hmac.c; sourceTree = "<group>"; };
@@ -198,6 +201,8 @@
 				E3BA46811A32F4D300047E61 /* NIMSettingsViewController.m */,
 				E3BA46841A32FC4600047E61 /* NIMTwitterHTTPClient.h */,
 				E3BA46851A32FC4600047E61 /* NIMTwitterHTTPClient.m */,
+				E3877EE11A3311F7000573FF /* NIMTweetCell.h */,
+				E3877EE21A3311F7000573FF /* NIMTweetCell.m */,
 			);
 			path = MyTwitterClient2;
 			sourceTree = "<group>";
@@ -384,6 +389,7 @@
 				E3BA468A1A33073600047E61 /* NIMTweet.m in Sources */,
 				E3BA46821A32F4D300047E61 /* NIMSettingsViewController.m in Sources */,
 				E3BA46861A32FC4600047E61 /* NIMTwitterHTTPClient.m in Sources */,
+				E3877EE31A3311F7000573FF /* NIMTweetCell.m in Sources */,
 				E3877F201A333B08000573FF /* NSString+URLEncoding.m in Sources */,
 				E3877F211A333B08000573FF /* OAuth.m in Sources */,
 				E3877F1C1A333B08000573FF /* Base64Transcoder.c in Sources */,
