@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Nikolay Morev. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 @interface NIMTweetsViewController : UITableViewController
 

@@ -396,13 +396,15 @@
 				SDKROOT = iphoneos;
 				WARNING_CFLAGS = (
 					"-Wall",
-					"-Wpedantic",
 					"-Wextra",
 					"-Weverything",
 					"-Wno-unused-parameter",
 					"-Wno-gnu-statement-expression",
 					"-Wno-objc-missing-property-synthesis",
 					"-Wno-documentation",
+					"-Wno-idiomatic-parentheses",
+					"-Wno-pedantic",
+					"-Wno-assign-enum",
 				);
 			};
 			name = Debug;
@@ -442,13 +444,15 @@
 				VALIDATE_PRODUCT = YES;
 				WARNING_CFLAGS = (
 					"-Wall",
-					"-Wpedantic",
 					"-Wextra",
 					"-Weverything",
 					"-Wno-unused-parameter",
 					"-Wno-gnu-statement-expression",
 					"-Wno-objc-missing-property-synthesis",
 					"-Wno-documentation",
+					"-Wno-idiomatic-parentheses",
+					"-Wno-pedantic",
+					"-Wno-assign-enum",
 				);
 			};
 			name = Release;
