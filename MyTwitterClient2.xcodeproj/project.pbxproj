@@ -9,11 +9,12 @@
 /* Begin PBXBuildFile section */
 		E3BA465A1A32EE3D00047E61 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E3BA46591A32EE3D00047E61 /* main.m */; };
 		E3BA465D1A32EE3D00047E61 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E3BA465C1A32EE3D00047E61 /* AppDelegate.m */; };
-		E3BA46601A32EE3D00047E61 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3BA465F1A32EE3D00047E61 /* ViewController.m */; };
 		E3BA46631A32EE3D00047E61 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3BA46611A32EE3D00047E61 /* Main.storyboard */; };
 		E3BA46651A32EE3D00047E61 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3BA46641A32EE3D00047E61 /* Images.xcassets */; };
 		E3BA46681A32EE3D00047E61 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3BA46661A32EE3D00047E61 /* LaunchScreen.xib */; };
 		E3BA46741A32EE3D00047E61 /* MyTwitterClient2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = E3BA46731A32EE3D00047E61 /* MyTwitterClient2Tests.m */; };
+		E3BA467F1A32F44C00047E61 /* NIMTweetsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3BA467E1A32F44C00047E61 /* NIMTweetsViewController.m */; };
+		E3BA46821A32F4D300047E61 /* NIMSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3BA46811A32F4D300047E61 /* NIMSettingsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,14 +33,16 @@
 		E3BA46591A32EE3D00047E61 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E3BA465B1A32EE3D00047E61 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E3BA465C1A32EE3D00047E61 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		E3BA465E1A32EE3D00047E61 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		E3BA465F1A32EE3D00047E61 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		E3BA46621A32EE3D00047E61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E3BA46641A32EE3D00047E61 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E3BA46671A32EE3D00047E61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		E3BA466D1A32EE3D00047E61 /* MyTwitterClient2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyTwitterClient2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3BA46721A32EE3D00047E61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E3BA46731A32EE3D00047E61 /* MyTwitterClient2Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyTwitterClient2Tests.m; sourceTree = "<group>"; };
+		E3BA467D1A32F44C00047E61 /* NIMTweetsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIMTweetsViewController.h; sourceTree = "<group>"; };
+		E3BA467E1A32F44C00047E61 /* NIMTweetsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIMTweetsViewController.m; sourceTree = "<group>"; };
+		E3BA46801A32F4D300047E61 /* NIMSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIMSettingsViewController.h; sourceTree = "<group>"; };
+		E3BA46811A32F4D300047E61 /* NIMSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIMSettingsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,12 +86,14 @@
 			children = (
 				E3BA465B1A32EE3D00047E61 /* AppDelegate.h */,
 				E3BA465C1A32EE3D00047E61 /* AppDelegate.m */,
-				E3BA465E1A32EE3D00047E61 /* ViewController.h */,
-				E3BA465F1A32EE3D00047E61 /* ViewController.m */,
 				E3BA46611A32EE3D00047E61 /* Main.storyboard */,
 				E3BA46641A32EE3D00047E61 /* Images.xcassets */,
 				E3BA46661A32EE3D00047E61 /* LaunchScreen.xib */,
 				E3BA46571A32EE3D00047E61 /* Supporting Files */,
+				E3BA467D1A32F44C00047E61 /* NIMTweetsViewController.h */,
+				E3BA467E1A32F44C00047E61 /* NIMTweetsViewController.m */,
+				E3BA46801A32F4D300047E61 /* NIMSettingsViewController.h */,
+				E3BA46811A32F4D300047E61 /* NIMSettingsViewController.m */,
 			);
 			path = MyTwitterClient2;
 			sourceTree = "<group>";
@@ -220,8 +225,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E3BA46601A32EE3D00047E61 /* ViewController.m in Sources */,
 				E3BA465D1A32EE3D00047E61 /* AppDelegate.m in Sources */,
+				E3BA467F1A32F44C00047E61 /* NIMTweetsViewController.m in Sources */,
+				E3BA46821A32F4D300047E61 /* NIMSettingsViewController.m in Sources */,
 				E3BA465A1A32EE3D00047E61 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
