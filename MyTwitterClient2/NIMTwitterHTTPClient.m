@@ -30,8 +30,9 @@ static NSString *const NIMTwitterHTTPClientAccessTokenSecret = @"LQ4OkOX49k3PFGC
                             URLByAppendingPathComponent:@"search/tweets.json"]
                            absoluteString];
     NSDictionary *parameters = @{ @"q" : @"iOS",
-                                  @"result_type" : @"recent" };
-    NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:@"%@?%@", URLString, @"q=iOS&result_type=recent"]];
+                                  @"result_type" : @"recent",
+                                  @"lang" : @"en" };
+    NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:@"%@?%@", URLString, @"lang=en&q=iOS&result_type=recent"]];
 
     OAuth *oAuth = [[OAuth alloc] initWithConsumerKey:NIMTwitterHTTPClientConsumerKey andConsumerSecret:NIMTwitterHTTPClientConsumerSecret];
     oAuth.oauth_token = NIMTwitterHTTPClientAccessToken;
