@@ -46,25 +46,27 @@ static NSString *const NIMTwitterHTTPClientAccessTokenSecret = @"LQ4OkOX49k3PFGC
     NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *taskError) {
 #warning проверка ошибок
 
-        if (taskError) {
-            if (completionBlock) completionBlock(nil, taskError);
-            return;
-        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (taskError) {
+                if (completionBlock) completionBlock(nil, taskError);
+                return;
+            }
 
-        NSError *JSONError;
-        NSDictionary *JSONDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&JSONError];
-        if (!JSONDictionary) {
-            if (completionBlock) completionBlock(nil, JSONError);
-            return;
-        }
+            NSError *JSONError;
+            NSDictionary *JSONDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&JSONError];
+            if (!JSONDictionary) {
+                if (completionBlock) completionBlock(nil, JSONError);
+                return;
+            }
 
-        NSMutableArray *tweets = [NSMutableArray array];
-        NSArray *tweetsJSON = JSONDictionary[@"statuses"];
-        for (NSDictionary *statusJSON in tweetsJSON) {
-            [tweets addObject:[[NIMTweet alloc] initWithJSONDictionary:statusJSON]];
-        }
-
-        if (completionBlock) completionBlock(tweets, nil);
+            NSMutableArray *tweets = [NSMutableArray array];
+            NSArray *tweetsJSON = JSONDictionary[@"statuses"];
+            for (NSDictionary *statusJSON in tweetsJSON) {
+                [tweets addObject:[[NIMTweet alloc] initWithJSONDictionary:statusJSON]];
+            }
+            
+            if (completionBlock) completionBlock(tweets, nil);
+        });
     }];
     [task resume];
 }
