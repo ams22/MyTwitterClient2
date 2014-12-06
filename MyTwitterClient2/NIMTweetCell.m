@@ -15,11 +15,14 @@
 #warning variable height
 #warning конфигурирование объектом модели вынести в категорию?
 
+static CGFloat const kAvatarWidth = 48.f;
+
 @interface NIMTweetCell ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *avatarImageView;
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *tweetTextLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *avatarWidth;
 
 @end
 
@@ -41,11 +44,18 @@
     [self.avatarImageView sd_cancelCurrentImageLoad];
 }
 
-- (void)configureWithTweet:(NIMTweet *)tweet
+- (void)configureWithTweet:(NIMTweet *)tweet showAvatars:(BOOL)showAvatars
 {
     self.usernameLabel.text = [NSString stringWithFormat:@"@%@ at %@", tweet.user.screenName, tweet.createdAt];
     self.tweetTextLabel.text = tweet.text;
-    [self.avatarImageView sd_setImageWithURL:tweet.user.profileImageURL];
+
+    if (showAvatars) {
+        self.avatarWidth.constant = kAvatarWidth;
+        [self.avatarImageView sd_setImageWithURL:tweet.user.profileImageURL];
+    }
+    else {
+        self.avatarWidth.constant = 0.f;
+    }
 }
 
 + (CGFloat)preferredHeight

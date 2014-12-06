@@ -70,6 +70,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="avatarImageView" destination="HJR-5P-99y" id="mvo-2C-XXd"/>
+                                    <outlet property="avatarWidth" destination="DEj-OY-tYh" id="fY7-lw-v6Z"/>
                                     <outlet property="tweetTextLabel" destination="XQs-v3-JeB" id="4Pj-fj-HEU"/>
                                     <outlet property="usernameLabel" destination="3Mp-aV-rgG" id="uNe-JO-3pT"/>
                                 </connections>
@@ -116,6 +117,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bhe-7j-Y2F">
                                                     <rect key="frame" x="536" y="6.5" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="showAvatarsSwitchToggled:" destination="DN3-Be-yi0" eventType="valueChanged" id="YN5-8U-LEk"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -132,6 +136,9 @@
                             <outlet property="delegate" destination="DN3-Be-yi0" id="BJL-g3-0Qc"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="showAvatarsSwitch" destination="Bhe-7j-Y2F" id="czj-8R-1Jw"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K9d-Xu-X1d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

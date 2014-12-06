@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E338CAD71A3351C700DDB2CD /* NIMSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = E338CAD61A3351C700DDB2CD /* NIMSettings.m */; };
 		E3877EE31A3311F7000573FF /* NIMTweetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E3877EE21A3311F7000573FF /* NIMTweetCell.m */; };
 		E3877F1C1A333B08000573FF /* Base64Transcoder.c in Sources */ = {isa = PBXBuildFile; fileRef = E3877EF51A333B08000573FF /* Base64Transcoder.c */; settings = {COMPILER_FLAGS = "-w"; }; };
 		E3877F1D1A333B08000573FF /* hmac.c in Sources */ = {isa = PBXBuildFile; fileRef = E3877EF71A333B08000573FF /* hmac.c */; settings = {COMPILER_FLAGS = "-w"; }; };
@@ -43,6 +44,8 @@
 		362B4246287275EDA8CE542A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A41F2F2F9CAB1B5FDB3ED6A5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E338CACD1A333BF100DDB2CD /* OAuthTwitterCallbacks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthTwitterCallbacks.h; sourceTree = "<group>"; };
+		E338CAD51A3351C700DDB2CD /* NIMSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIMSettings.h; sourceTree = "<group>"; };
+		E338CAD61A3351C700DDB2CD /* NIMSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIMSettings.m; sourceTree = "<group>"; };
 		E3877EE11A3311F7000573FF /* NIMTweetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIMTweetCell.h; sourceTree = "<group>"; };
 		E3877EE21A3311F7000573FF /* NIMTweetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIMTweetCell.m; sourceTree = "<group>"; };
 		E3877EF51A333B08000573FF /* Base64Transcoder.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Base64Transcoder.c; sourceTree = "<group>"; };
@@ -125,6 +128,19 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		E338CAD81A3354A500DDB2CD /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E3BA467D1A32F44C00047E61 /* NIMTweetsViewController.h */,
+				E3BA467E1A32F44C00047E61 /* NIMTweetsViewController.m */,
+				E3BA46801A32F4D300047E61 /* NIMSettingsViewController.h */,
+				E3BA46811A32F4D300047E61 /* NIMSettingsViewController.m */,
+				E3877EE11A3311F7000573FF /* NIMTweetCell.h */,
+				E3877EE21A3311F7000573FF /* NIMTweetCell.m */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
 		E3877EF11A333AD4000573FF /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
@@ -189,20 +205,15 @@
 			isa = PBXGroup;
 			children = (
 				E3BA46871A33072100047E61 /* Model */,
+				E338CAD81A3354A500DDB2CD /* View Controllers */,
 				E3BA465B1A32EE3D00047E61 /* AppDelegate.h */,
 				E3BA465C1A32EE3D00047E61 /* AppDelegate.m */,
 				E3BA46611A32EE3D00047E61 /* Main.storyboard */,
 				E3BA46641A32EE3D00047E61 /* Images.xcassets */,
 				E3BA46661A32EE3D00047E61 /* LaunchScreen.xib */,
 				E3BA46571A32EE3D00047E61 /* Supporting Files */,
-				E3BA467D1A32F44C00047E61 /* NIMTweetsViewController.h */,
-				E3BA467E1A32F44C00047E61 /* NIMTweetsViewController.m */,
-				E3BA46801A32F4D300047E61 /* NIMSettingsViewController.h */,
-				E3BA46811A32F4D300047E61 /* NIMSettingsViewController.m */,
 				E3BA46841A32FC4600047E61 /* NIMTwitterHTTPClient.h */,
 				E3BA46851A32FC4600047E61 /* NIMTwitterHTTPClient.m */,
-				E3877EE11A3311F7000573FF /* NIMTweetCell.h */,
-				E3877EE21A3311F7000573FF /* NIMTweetCell.m */,
 			);
 			path = MyTwitterClient2;
 			sourceTree = "<group>";
@@ -240,6 +251,8 @@
 				E3BA46891A33073600047E61 /* NIMTweet.m */,
 				E3BA468B1A3307BB00047E61 /* NIMUser.h */,
 				E3BA468C1A3307BB00047E61 /* NIMUser.m */,
+				E338CAD51A3351C700DDB2CD /* NIMSettings.h */,
+				E338CAD61A3351C700DDB2CD /* NIMSettings.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -380,6 +393,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E338CAD71A3351C700DDB2CD /* NIMSettings.m in Sources */,
 				E3877F1F1A333B08000573FF /* sha1.c in Sources */,
 				E3877F1D1A333B08000573FF /* hmac.c in Sources */,
 				E3BA465D1A32EE3D00047E61 /* AppDelegate.m in Sources */,

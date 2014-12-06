@@ -10,6 +10,7 @@
 #import "NIMTweetCell.h"
 #import "NIMTwitterHTTPClient.h"
 #import "NIMTweet.h"
+#import "NIMSettings.h"
 
 #warning <#message#>
 //static NSTimeInterval const kRefreshInterval = 60.0;
@@ -23,6 +24,7 @@ static NSTimeInterval const kTimerLabelRefreshInterval = 0.5;
 @property (nonatomic, weak) UILabel *timerLabel;
 @property (nonatomic, weak) NSTimer *refreshTimer;
 @property (nonatomic, weak) NSTimer *labelTimer;
+@property (nonatomic, copy) NIMSettings *settings;
 
 @end
 
@@ -45,6 +47,9 @@ static NSTimeInterval const kTimerLabelRefreshInterval = 0.5;
 {
     [super viewWillAppear:animated];
 
+    self.settings = nil;
+    [self.tableView reloadData];
+    
     [self refreshTweets];
 }
 
@@ -58,6 +63,14 @@ static NSTimeInterval const kTimerLabelRefreshInterval = 0.5;
 }
 
 #pragma mark -
+
+- (NIMSettings *)settings
+{
+    if (!_settings) {
+        _settings = [[NSUserDefaults standardUserDefaults] nim_settings];
+    }
+    return _settings;
+}
 
 - (NIMTwitterHTTPClient *)twitterClient
 {
@@ -117,7 +130,8 @@ static NSTimeInterval const kTimerLabelRefreshInterval = 0.5;
 {
     NIMTweetCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NIMTweetCell" forIndexPath:indexPath];
     NIMTweet *tweet = self.tweets[indexPath.row];
-    [cell configureWithTweet:tweet];
+    [cell configureWithTweet:tweet
+                 showAvatars:!self.settings.hideAvatars];
 
     return cell;
 }

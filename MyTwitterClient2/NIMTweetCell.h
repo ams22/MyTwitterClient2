@@ -12,7 +12,8 @@
 
 @interface NIMTweetCell : UITableViewCell
 
-- (void)configureWithTweet:(NIMTweet *)tweet;
+- (void)configureWithTweet:(NIMTweet *)tweet
+               showAvatars:(BOOL)showAvatars;
 + (CGFloat)preferredHeight;
 
 @end
