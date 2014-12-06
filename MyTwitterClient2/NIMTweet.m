@@ -42,7 +42,8 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _dateFormatter = [[NSDateFormatter alloc] init];
-#warning задать формат
+        _dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
+        _dateFormatter.dateFormat = @"EEE MMM dd HH:mm:ss Z yyyy";
     });
 
     return _dateFormatter;
