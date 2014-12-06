@@ -11,22 +11,50 @@
 #import "NIMTwitterHTTPClient.h"
 #import "NIMTweet.h"
 
+#warning <#message#>
+//static NSTimeInterval const kRefreshInterval = 60.0;
+static NSTimeInterval const kRefreshInterval = 15.0;
+static NSTimeInterval const kTimerLabelRefreshInterval = 0.5;
+
 @interface NIMTweetsViewController ()
 
 @property (nonatomic, strong) NIMTwitterHTTPClient *twitterClient;
 @property (nonatomic, copy) NSArray *tweets;
+@property (nonatomic, weak) UILabel *timerLabel;
+@property (nonatomic, weak) NSTimer *refreshTimer;
+@property (nonatomic, weak) NSTimer *labelTimer;
 
 @end
 
 @implementation NIMTweetsViewController
 
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+
+    UILabel *timerLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    timerLabel.text = [self timerLabelText];
+    [timerLabel sizeToFit];
+
+    UIBarButtonItem *timerItem = [[UIBarButtonItem alloc] initWithCustomView:timerLabel];
+    self.navigationItem.leftBarButtonItem = timerItem;
+    self.timerLabel = timerLabel;
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
 
-    [self.twitterClient searchTweetsCompletionBlock:^(NSArray *tweets, NSError *error) {
-        self.tweets = tweets;
-    }];
+    [self refreshTweets];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+
+#warning проверить, достаточно ли инвалидировать только здесь или нужно еще что-то предусмотреть
+    [self.refreshTimer invalidate];
+    [self.labelTimer invalidate];
 }
 
 #pragma mark -
@@ -39,12 +67,43 @@
     return _twitterClient;
 }
 
+- (void)refreshTweets
+{
+    [self.refreshTimer invalidate];
+    [self.labelTimer invalidate];
+
+    self.timerLabel.text = @"↺";
+
+    [self.twitterClient searchTweetsCompletionBlock:^(NSArray *tweets, NSError *error) {
+        self.tweets = tweets;
+
+        self.refreshTimer = [NSTimer scheduledTimerWithTimeInterval:kRefreshInterval target:self selector:@selector(refreshTweets) userInfo:nil repeats:NO];
+        self.labelTimer = [NSTimer scheduledTimerWithTimeInterval:kTimerLabelRefreshInterval target:self selector:@selector(timerLabelTick) userInfo:nil repeats:YES];
+    }];
+}
+
 - (void)setTweets:(NSArray *)tweets
 {
     _tweets = [tweets copy];
     if ([self isViewLoaded]) {
         [self.tableView reloadData];
     }
+}
+
+- (void)timerLabelTick
+{
+    self.timerLabel.text = [self timerLabelText];
+}
+
+- (NSString *)timerLabelText
+{
+    NSString *timeText = @"--:--";
+    if (self.refreshTimer.fireDate) {
+        NSTimeInterval interval = MAX(0.0, [self.refreshTimer.fireDate timeIntervalSinceNow]);
+        timeText = [NSString stringWithFormat:@"%lus", (unsigned long)interval];
+    }
+
+    return [NSString stringWithFormat:@"↻ %@", timeText];
 }
 
 #pragma mark - UITableViewDataSource
