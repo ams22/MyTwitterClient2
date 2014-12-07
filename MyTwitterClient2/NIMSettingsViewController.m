@@ -32,4 +32,18 @@
     [[NSUserDefaults standardUserDefaults] nim_setSettings:self.settings];
 }
 
+// Явное задание высоты ячейки необходимо, чтобы заглушить сообщение в консоли:
+// 2014-12-07 21:58:48.718 MyTwitterClient2[11032:3072228] Warning once only: Detected a case where constraints ambiguously suggest a height of zero for a tableview cell's content view. We're considering the collapse unintentional and using standard height instead.
+// Еще можно было бы добавить вертикальные констрейнты, но IB не позволяет этого сделать.
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 44.f;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 44.f;
+}
+
 @end
