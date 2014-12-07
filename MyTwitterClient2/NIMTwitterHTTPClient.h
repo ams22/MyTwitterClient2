@@ -10,6 +10,9 @@
 
 typedef void (^NIMTwitterHTTPClientTweetsCompletionBlock)(NSArray *tweets, NSError *error);
 
+extern NSString *const NIMTwitterHTTPClientErrorDomain;
+extern NSString *const NIMTwitterHTTPClientErrorResponseKey;
+
 @interface NIMTwitterHTTPClient : NSObject
 
 /**

@@ -15,6 +15,9 @@
 #import "GCOAuth.h"
 #pragma clang diagnostic pop
 
+NSString *const NIMTwitterHTTPClientErrorDomain = @"NIMTwitterHTTPClientErrorDomain";
+NSString *const NIMTwitterHTTPClientErrorResponseKey = @"NIMTwitterHTTPClientErrorResponse";
+
 static NSString *const NIMTwitterHTTPClientConsumerKey = @"83ZNM9vmZiMOo9EfMlM4fU9CG";
 static NSString *const NIMTwitterHTTPClientConsumerSecret = @"LusD3WSbsilUIfvJ8Kt6XDe5NXP2krPsyaOr7LpnrZo7dtKx3e";
 static NSString *const NIMTwitterHTTPClientAccessToken = @"47601564-Q3n72hpbHyOYgtBWuN4E0i04IHCQ3xhdx3MYcQ6CU";
@@ -38,8 +41,6 @@ static NSString *const NIMTwitterHTTPClientAccessTokenSecret = @"LQ4OkOX49k3PFGC
                                            tokenSecret:NIMTwitterHTTPClientAccessTokenSecret];
 
     NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *taskError) {
-#warning проверка ошибок
-
         dispatch_async(dispatch_get_main_queue(), ^{
             if (taskError) {
                 if (completionBlock) completionBlock(nil, taskError);
@@ -47,9 +48,19 @@ static NSString *const NIMTwitterHTTPClientAccessTokenSecret = @"LQ4OkOX49k3PFGC
             }
 
             NSError *JSONError;
-            NSDictionary *JSONDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&JSONError];
+            id JSONDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&JSONError];
             if (!JSONDictionary) {
                 if (completionBlock) completionBlock(nil, JSONError);
+                return;
+            }
+
+            NSHTTPURLResponse *HTTPResponse = (id)response;
+            if ([HTTPResponse statusCode] != 200) {
+                NSDictionary *userInfo = JSONDictionary ? @{ NIMTwitterHTTPClientErrorResponseKey : JSONDictionary } : nil;
+                NSError *error = [NSError errorWithDomain:NIMTwitterHTTPClientErrorDomain
+                                                     code:[HTTPResponse statusCode]
+                                                 userInfo:userInfo];
+                if (completionBlock) completionBlock(nil, error);
                 return;
             }
 
