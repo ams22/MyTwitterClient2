@@ -14,7 +14,7 @@
 #import <SDWebImage/SDWebImagePrefetcher.h>
 #import <SDWebImage/SDWebImageManager.h>
 
-static NSTimeInterval const kRefreshInterval = 15.0;
+static NSTimeInterval const kRefreshInterval = 60.0;
 
 @interface NIMTweetsDataController ()
 
