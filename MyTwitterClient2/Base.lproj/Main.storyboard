@@ -81,7 +81,7 @@
                             <outlet property="delegate" destination="7oI-mu-UP0" id="XRv-LD-M7T"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Tweets" id="JlE-2l-zun">
+                    <navigationItem key="navigationItem" title="iOS Tweets" id="JlE-2l-zun">
                         <barButtonItem key="rightBarButtonItem" title="Settings" id="luT-tt-2do">
                             <connections>
                                 <segue destination="DN3-Be-yi0" kind="show" id="cAq-dh-Qyl"/>
