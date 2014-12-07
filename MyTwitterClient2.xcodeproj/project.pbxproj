@@ -166,6 +166,8 @@
 		E3BA46561A32EE3D00047E61 /* MyTwitterClient2 */ = {
 			isa = PBXGroup;
 			children = (
+				E3BA46841A32FC4600047E61 /* NIMTwitterHTTPClient.h */,
+				E3BA46851A32FC4600047E61 /* NIMTwitterHTTPClient.m */,
 				E3BA46871A33072100047E61 /* Model */,
 				E338CAD81A3354A500DDB2CD /* View Controllers */,
 				E3BA465B1A32EE3D00047E61 /* AppDelegate.h */,
@@ -174,8 +176,6 @@
 				E3BA46641A32EE3D00047E61 /* Images.xcassets */,
 				E3BA46661A32EE3D00047E61 /* LaunchScreen.xib */,
 				E3BA46571A32EE3D00047E61 /* Supporting Files */,
-				E3BA46841A32FC4600047E61 /* NIMTwitterHTTPClient.h */,
-				E3BA46851A32FC4600047E61 /* NIMTwitterHTTPClient.m */,
 			);
 			path = MyTwitterClient2;
 			sourceTree = "<group>";

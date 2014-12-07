@@ -8,8 +8,13 @@
 
 @import Foundation;
 
+typedef void (^NIMTwitterHTTPClientTweetsCompletionBlock)(NSArray *tweets, NSError *error);
+
 @interface NIMTwitterHTTPClient : NSObject
 
-- (void)searchTweetsCompletionBlock:(void (^)(NSArray *tweets, NSError *error))completionBlock;
+/**
+ @param completionBlock tweets - массив NIMTweet-ов или nil, если произошла ошибка error
+ */
+- (void)searchTweetsCompletionBlock:(NIMTwitterHTTPClientTweetsCompletionBlock)completionBlock;
 
 @end

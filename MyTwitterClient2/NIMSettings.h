@@ -10,6 +10,7 @@
 
 @interface NIMSettings : NSObject <NSCopying>
 
+//! Значение по-умолчанию NO
 @property (nonatomic) BOOL hideAvatars;
 
 @end

@@ -183,7 +183,7 @@ cleanup:
 
 #pragma mark - Public Interface
 
-- (void)fetchCachedTweets:(void (^)(NSArray *, NSError *))resultsBlock
+- (void)fetchCachedTweets:(NIMFMDataSourceTweetsResultsBlock)resultsBlock
 {
     dispatch_async(self.queue, ^{
         NSArray *tweets = [self cachedTweets];
@@ -197,7 +197,7 @@ cleanup:
 }
 
 - (void)storeCachedTweets:(NSArray *)tweets
-          completionBlock:(void (^)(BOOL, NSError *))completionBlock
+          completionBlock:(NIMFMDataSourceUpdateCompletionBlock)completionBlock
 {
     dispatch_async(self.queue, ^{
         BOOL ok = [self storeCachedTweets:tweets];

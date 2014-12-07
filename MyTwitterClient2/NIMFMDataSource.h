@@ -8,15 +8,25 @@
 
 @import Foundation;
 
+typedef void (^NIMFMDataSourceTweetsResultsBlock)(NSArray *tweets, NSError *error);
+typedef void (^NIMFMDataSourceUpdateCompletionBlock)(BOOL success, NSError *error);
+
 @interface NIMFMDataSource : NSObject
 
 - (instancetype)initWithDatabasePath:(NSString *)path;
 
+//! Singleton с дефолтным путем к базе данные в директории Library/Caches
 + (instancetype)defaultDataSource;
 
-- (void)fetchCachedTweets:(void (^)(NSArray *tweets, NSError *error))resultsBlock;
+/**
+ @param resultsBlock tweets - массив NIMTweet-ов или nil, если произошла ошибка error
+ */
+- (void)fetchCachedTweets:(NIMFMDataSourceTweetsResultsBlock)resultsBlock;
 
+/**
+ @param tweets массив NIMTweet-ов
+ */
 - (void)storeCachedTweets:(NSArray *)tweets
-          completionBlock:(void (^)(BOOL success, NSError *error))completionBlock;
+          completionBlock:(NIMFMDataSourceUpdateCompletionBlock)completionBlock;
 
 @end
