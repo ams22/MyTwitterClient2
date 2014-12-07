@@ -9,32 +9,31 @@
 @import UIKit;
 @import XCTest;
 
+#import "NIMTwitterHTTPClient.h"
+#import "NIMFMDataSource.h"
+
 @interface MyTwitterClient2Tests : XCTestCase
 
 @end
 
 @implementation MyTwitterClient2Tests
 
-- (void)setUp {
-    [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
-}
-
-- (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
-    [super tearDown];
-}
-
+// Интеграционный тест для отладки.
 - (void)testExample {
-    // This is an example of a functional test case.
-    XCTAssert(YES, @"Pass");
-}
+    XCTestExpectation *response = [self expectationWithDescription:@"response"];
 
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
+    NIMTwitterHTTPClient *client = [[NIMTwitterHTTPClient alloc] init];
+    NIMFMDataSource *dataSource = [NIMFMDataSource defaultDataSource];
+
+    [client searchTweetsCompletionBlock:^(NSArray *tweets, NSError *error) {
+        [dataSource storeCachedTweets:tweets completionBlock:^(BOOL success, NSError *error) {
+            [dataSource fetchCachedTweets:^(NSArray *tweets, NSError *error) {
+                [response fulfill];
+            }];
+        }];
     }];
+
+    [self waitForExpectationsWithTimeout:999 handler:nil];
 }
 
 @end
