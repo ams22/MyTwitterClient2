@@ -14,6 +14,6 @@
 
 - (void)configureWithTweet:(NIMTweet *)tweet
                showAvatars:(BOOL)showAvatars;
-+ (CGFloat)preferredHeight;
++ (CGFloat)preferredHeightWithTweet:(NIMTweet *)tweet width:(CGFloat)width;
 
 @end

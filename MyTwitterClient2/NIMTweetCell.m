@@ -44,9 +44,22 @@ static CGFloat const kAvatarWidth = 48.f;
     [self.avatarImageView sd_cancelCurrentImageLoad];
 }
 
++ (NSDateFormatter *)dateFormatter
+{
+    static NSDateFormatter *_dateFormatter = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _dateFormatter = [[NSDateFormatter alloc] init];
+        _dateFormatter.doesRelativeDateFormatting = YES;
+        _dateFormatter.timeStyle = NSDateFormatterShortStyle;
+    });
+
+    return _dateFormatter;
+}
+
 - (void)configureWithTweet:(NIMTweet *)tweet showAvatars:(BOOL)showAvatars
 {
-    self.usernameLabel.text = [NSString stringWithFormat:@"@%@ at %@", tweet.user.screenName, tweet.createdAt];
+    self.usernameLabel.text = [NSString stringWithFormat:@"@%@ at %@", tweet.user.screenName, [[[self class] dateFormatter] stringFromDate:tweet.createdAt]];
     self.tweetTextLabel.text = tweet.text;
 
     if (showAvatars) {
@@ -58,9 +71,20 @@ static CGFloat const kAvatarWidth = 48.f;
     }
 }
 
-+ (CGFloat)preferredHeight
++ (CGFloat)preferredHeightWithTweet:(NIMTweet *)tweet width:(CGFloat)width
 {
-    return 88.f;
+    // Эти параметры необходимо синхронизировать со сторибордом
+    CGRect textLabelFrame = CGRectMake(64.f, 28.f,
+                                       width - 64.f - 8.f, // отступ справа, отступ слева
+                                       320.f); // максимальная высота
+    NSMutableParagraphStyle *paragraphStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+    paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
+    NSDictionary *textAttributes = @{ NSFontAttributeName : [UIFont systemFontOfSize:13.f],
+                                      NSParagraphStyleAttributeName : paragraphStyle };
+    CGRect boundingRect = [tweet.text boundingRectWithSize:textLabelFrame.size options:NSStringDrawingUsesLineFragmentOrigin attributes:textAttributes context:nil];
+    CGFloat height = MAX(64.f, CGRectGetMinY(textLabelFrame) + CGRectGetHeight(boundingRect) + 8.f) + 1.f;
+
+    return height;
 }
 
 @end

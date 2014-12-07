@@ -162,7 +162,8 @@ static NSTimeInterval const kTimerLabelRefreshInterval = 0.5;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [NIMTweetCell preferredHeight];
+    NIMTweet *tweet = self.tweets[indexPath.row];
+    return [NIMTweetCell preferredHeightWithTweet:tweet width:CGRectGetWidth(tableView.bounds)];
 }
 
 @end
