@@ -11,6 +11,7 @@
 #import "NIMTwitterHTTPClient.h"
 #import "NIMTweet.h"
 #import "NIMSettings.h"
+#import "NIMFMDataSource.h"
 
 #warning <#message#>
 //static NSTimeInterval const kRefreshInterval = 60.0;
@@ -20,6 +21,7 @@ static NSTimeInterval const kTimerLabelRefreshInterval = 0.5;
 @interface NIMTweetsViewController ()
 
 @property (nonatomic, strong) NIMTwitterHTTPClient *twitterClient;
+@property (nonatomic, strong) NIMFMDataSource *dataSource;
 @property (nonatomic, copy) NSArray *tweets;
 @property (nonatomic, weak) UILabel *timerLabel;
 @property (nonatomic, weak) NSTimer *refreshTimer;
@@ -47,10 +49,19 @@ static NSTimeInterval const kTimerLabelRefreshInterval = 0.5;
 {
     [super viewWillAppear:animated];
 
+    // Настройки могли обновиться
     self.settings = nil;
     [self.tableView reloadData];
-    
-    [self refreshTweets];
+
+    // Сначала покажем закэшированное
+    [self.dataSource fetchCachedTweets:^(NSArray *tweets, NSError *error) {
+        if (tweets) {
+            self.tweets = tweets;
+        }
+
+        // Потом попробуем загрузить по сети
+        [self refreshTweets];
+    }];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -80,6 +91,14 @@ static NSTimeInterval const kTimerLabelRefreshInterval = 0.5;
     return _twitterClient;
 }
 
+- (NIMFMDataSource *)dataSource
+{
+    if (!_dataSource) {
+        _dataSource = [NIMFMDataSource defaultDataSource];
+    }
+    return _dataSource;
+}
+
 - (void)refreshTweets
 {
     [self.refreshTimer invalidate];
@@ -88,7 +107,10 @@ static NSTimeInterval const kTimerLabelRefreshInterval = 0.5;
     self.timerLabel.text = @"↺";
 
     [self.twitterClient searchTweetsCompletionBlock:^(NSArray *tweets, NSError *error) {
-        self.tweets = tweets;
+        if (tweets) {
+            self.tweets = tweets;
+            [self.dataSource storeCachedTweets:tweets completionBlock:nil];
+        }
 
         self.refreshTimer = [NSTimer scheduledTimerWithTimeInterval:kRefreshInterval target:self selector:@selector(refreshTweets) userInfo:nil repeats:NO];
         self.labelTimer = [NSTimer scheduledTimerWithTimeInterval:kTimerLabelRefreshInterval target:self selector:@selector(timerLabelTick) userInfo:nil repeats:YES];
