@@ -80,7 +80,10 @@ static CGFloat const kAvatarWidth = 48.f;
     NSDictionary *textAttributes = @{ NSFontAttributeName : [UIFont systemFontOfSize:13.f],
                                       NSParagraphStyleAttributeName : paragraphStyle };
     CGRect boundingRect = [tweet.text boundingRectWithSize:textLabelFrame.size options:NSStringDrawingUsesLineFragmentOrigin attributes:textAttributes context:nil];
-    CGFloat height = MAX(64.f, CGRectGetMinY(textLabelFrame) + CGRectGetHeight(boundingRect) + 8.f) + 1.f;
+    CGFloat height = (MAX(64.f, // высота аватара + отступы
+                          CGRectGetMinY(textLabelFrame) + CGRectGetHeight(boundingRect)
+                          + 8.f) // отступ от низа
+                      + 1.f); // разделитель ячеек
 
     return height;
 }
