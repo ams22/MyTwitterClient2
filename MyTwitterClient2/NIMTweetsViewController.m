@@ -68,7 +68,6 @@ static NSTimeInterval const kTimerLabelRefreshInterval = 0.5;
 {
     [super viewDidDisappear:animated];
 
-#warning проверить, достаточно ли инвалидировать только здесь или нужно еще что-то предусмотреть
     [self.refreshTimer invalidate];
     [self.labelTimer invalidate];
 }
@@ -112,8 +111,14 @@ static NSTimeInterval const kTimerLabelRefreshInterval = 0.5;
             [self.dataSource storeCachedTweets:tweets completionBlock:nil];
         }
 
-        self.refreshTimer = [NSTimer scheduledTimerWithTimeInterval:kRefreshInterval target:self selector:@selector(refreshTweets) userInfo:nil repeats:NO];
-        self.labelTimer = [NSTimer scheduledTimerWithTimeInterval:kTimerLabelRefreshInterval target:self selector:@selector(timerLabelTick) userInfo:nil repeats:YES];
+        if ([self isViewLoaded] && self.view.window) {
+            self.refreshTimer = [NSTimer scheduledTimerWithTimeInterval:kRefreshInterval target:self selector:@selector(refreshTweets) userInfo:nil repeats:NO];
+
+            NSTimer *labelTimer = [NSTimer timerWithTimeInterval:kTimerLabelRefreshInterval target:self selector:@selector(timerLabelTick) userInfo:nil repeats:YES];
+            // Чтобы работало во время скроллинга
+            [[NSRunLoop currentRunLoop] addTimer:labelTimer forMode:NSRunLoopCommonModes];
+            self.labelTimer = labelTimer;
+        }
     }];
 }
 
