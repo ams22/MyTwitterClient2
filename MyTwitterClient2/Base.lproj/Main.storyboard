@@ -97,14 +97,14 @@
         <scene sceneID="WDk-IK-bx1">
             <objects>
                 <tableViewController title="Settings" id="DN3-Be-yi0" customClass="NIMSettingsViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="5CV-5X-wR1">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="5CV-5X-wR1">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
                             <tableViewSection headerTitle="Tweets Settings" id="gn7-H4-jQM">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EnableAvatarCell" textLabel="hXr-7j-bcr" style="IBUITableViewCellStyleDefault" id="40d-Fx-3og">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="EnableAvatarCell" textLabel="hXr-7j-bcr" style="IBUITableViewCellStyleDefault" id="40d-Fx-3og">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="40d-Fx-3og" id="KpO-6c-G7D">
                                             <autoresizingMask key="autoresizingMask"/>
