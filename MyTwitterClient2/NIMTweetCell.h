@@ -8,12 +8,17 @@
 
 @import UIKit;
 
+@interface NIMTweetCell : UITableViewCell
+
+@end
+
 @class NIMTweet;
 
-@interface NIMTweetCell : UITableViewCell
+@interface NIMTweetCell (NIMTweets)
 
 - (void)configureWithTweet:(NIMTweet *)tweet
                showAvatars:(BOOL)showAvatars;
-+ (CGFloat)preferredHeightWithTweet:(NIMTweet *)tweet width:(CGFloat)width;
++ (CGFloat)preferredHeightWithTweet:(NIMTweet *)tweet
+                              width:(CGFloat)width;
 
 @end

@@ -12,9 +12,6 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 @import QuartzCore;
 
-#warning variable height
-#warning конфигурирование объектом модели вынести в категорию?
-
 static CGFloat const kAvatarWidth = 48.f;
 
 @interface NIMTweetCell ()
@@ -43,6 +40,10 @@ static CGFloat const kAvatarWidth = 48.f;
 {
     [self.avatarImageView sd_cancelCurrentImageLoad];
 }
+
+@end
+
+@implementation NIMTweetCell (NIMTweets)
 
 + (NSDateFormatter *)dateFormatter
 {
@@ -86,5 +87,6 @@ static CGFloat const kAvatarWidth = 48.f;
 
     return height;
 }
+
 
 @end
