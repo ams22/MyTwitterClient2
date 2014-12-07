@@ -15,7 +15,7 @@ typedef void (^NIMFMDataSourceUpdateCompletionBlock)(BOOL success, NSError *erro
 
 - (instancetype)initWithDatabasePath:(NSString *)path;
 
-//! Singleton с дефолтным путем к базе данные в директории Library/Caches
+//! Singleton с дефолтным путем к базе данных в директории Library/Caches
 + (instancetype)defaultDataSource;
 
 /**

@@ -22,16 +22,8 @@
 {
     [super viewWillAppear:animated];
 
-    self.settings = nil;
+    self.settings = [[NSUserDefaults standardUserDefaults] nim_settings];
     self.showAvatarsSwitch.on = !self.settings.hideAvatars;
-}
-
-- (NIMSettings *)settings
-{
-    if (!_settings) {
-        _settings = [[NSUserDefaults standardUserDefaults] nim_settings];
-    }
-    return _settings;
 }
 
 - (IBAction)showAvatarsSwitchToggled:(UISwitch *)swtch
