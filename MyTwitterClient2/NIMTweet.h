@@ -17,6 +17,14 @@
 @property (nonatomic, copy) NSString *text;
 @property (nonatomic, copy) NIMUser *user;
 
+@end
+
+@interface NIMTweet (Parsing)
+
+/**
+ Валидация входных данных не производится, предполагаем, что они всегда
+ корректные
+ */
 - (instancetype)initWithJSONDictionary:(NSDictionary *)dictionary;
 
 @end

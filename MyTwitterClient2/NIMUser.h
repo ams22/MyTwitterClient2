@@ -15,6 +15,14 @@
 @property (nonatomic, copy) NSURL *profileImageURL;
 @property (nonatomic, copy) NSString *screenName;
 
+@end
+
+@interface NIMUser (Parsing)
+
+/**
+ Валидация входных данных не производится, предполагаем, что они всегда
+ корректные
+ */
 - (instancetype)initWithJSONDictionary:(NSDictionary *)dictionary;
 
 @end

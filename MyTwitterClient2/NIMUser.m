@@ -10,18 +10,6 @@
 
 @implementation NIMUser
 
-- (instancetype)initWithJSONDictionary:(NSDictionary *)dictionary
-{
-    if (self = [super init]) {
-#warning валидация
-        _idStr = [dictionary[@"id_str"] copy];
-        _name = [dictionary[@"name"] copy];
-        _profileImageURL = [NSURL URLWithString:dictionary[@"profile_image_url"]];
-        _screenName = [dictionary[@"screen_name"] copy];
-    }
-    return self;
-}
-
 - (id)copyWithZone:(NSZone *)zone
 {
     NIMUser *copy = [[[self class] allocWithZone:zone] init];
@@ -48,6 +36,24 @@
 - (NSString *)description
 {
     return [NSString stringWithFormat:@"NIMTweet %@ %@", self.idStr, self.screenName];
+}
+
+@end
+
+@implementation NIMUser (Parsing)
+
+- (instancetype)initWithJSONDictionary:(NSDictionary *)dictionary
+{
+    if (self = [super init]) {
+        _idStr = [dictionary[@"id_str"] copy];
+        _name = [dictionary[@"name"] copy];
+        NSString *profileImageURLString = dictionary[@"profile_image_url"];
+        // Берем большой вариант аватарки, чтобы красиво смотрелось на ретине
+        profileImageURLString = [profileImageURLString stringByReplacingOccurrencesOfString:@"_normal" withString:@"_bigger"];
+        _profileImageURL = [NSURL URLWithString:profileImageURLString];
+        _screenName = [dictionary[@"screen_name"] copy];
+    }
+    return self;
 }
 
 @end
