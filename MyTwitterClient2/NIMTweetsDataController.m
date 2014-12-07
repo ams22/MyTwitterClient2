@@ -18,8 +18,6 @@ static NSTimeInterval const kRefreshInterval = 15.0;
 
 @interface NIMTweetsDataController ()
 
-@property (nonatomic, strong) NIMTwitterHTTPClient *twitterClient;
-@property (nonatomic, strong) NIMFMDataSource *dataSource;
 @property (nonatomic, weak) NSTimer *refreshTimer;
 @property (nonatomic, readwrite, copy) NSArray *tweets;
 @property (nonatomic, weak) NSURLSessionTask *fetchTask;

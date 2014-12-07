@@ -8,7 +8,7 @@
 
 @import Foundation;
 
-@class NIMTweetsDataController;
+@class NIMTweetsDataController, NIMTwitterHTTPClient, NIMFMDataSource;
 
 @protocol NIMTweetsDataControllerDelegate <NSObject>
 
@@ -18,8 +18,12 @@
 
 @interface NIMTweetsDataController : NSObject
 
+@property (nonatomic, strong) NIMTwitterHTTPClient *twitterClient;
+@property (nonatomic, strong) NIMFMDataSource *dataSource;
 @property (nonatomic, weak) id<NIMTweetsDataControllerDelegate> delegate;
+
 @property (nonatomic, readonly, copy) NSArray *tweets;
+
 @property (nonatomic, readonly) BOOL fetching;
 @property (nonatomic, readonly) NSTimeInterval timeUntilNextFetch;
 
