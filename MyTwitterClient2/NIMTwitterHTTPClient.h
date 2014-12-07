@@ -18,6 +18,6 @@ extern NSString *const NIMTwitterHTTPClientErrorResponseKey;
 /**
  @param completionBlock tweets - массив NIMTweet-ов или nil, если произошла ошибка error
  */
-- (void)searchTweetsCompletionBlock:(NIMTwitterHTTPClientTweetsCompletionBlock)completionBlock;
+- (NSURLSessionTask *)searchTweetsCompletionBlock:(NIMTwitterHTTPClientTweetsCompletionBlock)completionBlock;
 
 @end

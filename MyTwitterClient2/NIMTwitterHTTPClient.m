@@ -25,7 +25,7 @@ static NSString *const NIMTwitterHTTPClientAccessTokenSecret = @"LQ4OkOX49k3PFGC
 
 @implementation NIMTwitterHTTPClient
 
-- (void)searchTweetsCompletionBlock:(NIMTwitterHTTPClientTweetsCompletionBlock)completionBlock
+- (NSURLSessionTask *)searchTweetsCompletionBlock:(NIMTwitterHTTPClientTweetsCompletionBlock)completionBlock
 {
     NSDictionary *parameters = @{ @"q" : @"iOS",
                                   @"result_type" : @"recent",
@@ -74,6 +74,8 @@ static NSString *const NIMTwitterHTTPClientAccessTokenSecret = @"LQ4OkOX49k3PFGC
         });
     }];
     [task resume];
+
+    return task;
 }
 
 @end

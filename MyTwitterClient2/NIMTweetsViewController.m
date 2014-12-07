@@ -8,23 +8,16 @@
 
 #import "NIMTweetsViewController.h"
 #import "NIMTweetCell.h"
-#import "NIMTwitterHTTPClient.h"
 #import "NIMTweet.h"
-#import "NIMUser.h"
 #import "NIMSettings.h"
-#import "NIMFMDataSource.h"
-#import <SDWebImage/SDWebImagePrefetcher.h>
+#import "NIMTweetsDataController.h"
 
-static NSTimeInterval const kRefreshInterval = 60.0;
 static NSTimeInterval const kTimerLabelRefreshInterval = 0.5;
 
-@interface NIMTweetsViewController ()
+@interface NIMTweetsViewController () <NIMTweetsDataControllerDelegate>
 
-@property (nonatomic, strong) NIMTwitterHTTPClient *twitterClient;
-@property (nonatomic, strong) NIMFMDataSource *dataSource;
-@property (nonatomic, copy) NSArray *tweets;
+@property (nonatomic, strong) NIMTweetsDataController *dataController;
 @property (nonatomic, weak) UILabel *timerLabel;
-@property (nonatomic, weak) NSTimer *refreshTimer;
 @property (nonatomic, weak) NSTimer *labelTimer;
 @property (nonatomic, copy) NIMSettings *settings;
 
@@ -35,6 +28,9 @@ static NSTimeInterval const kTimerLabelRefreshInterval = 0.5;
 - (void)awakeFromNib
 {
     [super awakeFromNib];
+
+    self.dataController = [[NIMTweetsDataController alloc] init];
+    self.dataController.delegate = self;
 
     UILabel *timerLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     timerLabel.text = [self timerLabelText];
@@ -53,22 +49,19 @@ static NSTimeInterval const kTimerLabelRefreshInterval = 0.5;
     self.settings = nil;
     [self.tableView reloadData];
 
-    // Сначала покажем закэшированное
-    [self.dataSource fetchCachedTweets:^(NSArray *tweets, NSError *error) {
-        if (tweets) {
-            self.tweets = tweets;
-        }
+    [self.dataController startUpdating];
 
-        // Потом попробуем загрузить по сети
-        [self refreshTweets];
-    }];
+    NSTimer *labelTimer = [NSTimer timerWithTimeInterval:kTimerLabelRefreshInterval target:self selector:@selector(timerLabelTick) userInfo:nil repeats:YES];
+    // Чтобы работало во время скроллинга
+    [[NSRunLoop currentRunLoop] addTimer:labelTimer forMode:NSRunLoopCommonModes];
+    self.labelTimer = labelTimer;
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
 
-    [self.refreshTimer invalidate];
+    [self.dataController stopUpdating];
     [self.labelTimer invalidate];
 }
 
@@ -82,91 +75,36 @@ static NSTimeInterval const kTimerLabelRefreshInterval = 0.5;
     return _settings;
 }
 
-- (NIMTwitterHTTPClient *)twitterClient
-{
-    if (!_twitterClient) {
-        _twitterClient = [[NIMTwitterHTTPClient alloc] init];
-    }
-    return _twitterClient;
-}
-
-- (NIMFMDataSource *)dataSource
-{
-    if (!_dataSource) {
-        _dataSource = [NIMFMDataSource defaultDataSource];
-    }
-    return _dataSource;
-}
-
-- (void)refreshTweets
-{
-    [self.refreshTimer invalidate];
-    [self.labelTimer invalidate];
-
-    self.timerLabel.text = @"↺";
-
-    [self.twitterClient searchTweetsCompletionBlock:^(NSArray *tweets, NSError *error) {
-        if (tweets) {
-            self.tweets = tweets;
-            [self.dataSource storeCachedTweets:tweets completionBlock:nil];
-
-            // Сохраним в кэше все изображения, чтобы в оффлайне были видны даже
-            // те картинки, которые не подгрузились в ячейке, так как
-            // соответствующая ячейка не была отображена.
-
-            NSMutableSet *avatarURLs = [NSMutableSet set];
-            for (NIMTweet *tweet in tweets) {
-                [avatarURLs addObject:tweet.user.profileImageURL];
-            }
-            [[SDWebImagePrefetcher sharedImagePrefetcher] prefetchURLs:[avatarURLs allObjects]];
-        }
-
-        if ([self isViewLoaded] && self.view.window) {
-            self.refreshTimer = [NSTimer scheduledTimerWithTimeInterval:kRefreshInterval target:self selector:@selector(refreshTweets) userInfo:nil repeats:NO];
-
-            NSTimer *labelTimer = [NSTimer timerWithTimeInterval:kTimerLabelRefreshInterval target:self selector:@selector(timerLabelTick) userInfo:nil repeats:YES];
-            // Чтобы работало во время скроллинга
-            [[NSRunLoop currentRunLoop] addTimer:labelTimer forMode:NSRunLoopCommonModes];
-            self.labelTimer = labelTimer;
-        }
-    }];
-}
-
-- (void)setTweets:(NSArray *)tweets
-{
-    _tweets = [tweets copy];
-    if ([self isViewLoaded]) {
-        [self.tableView reloadData];
-    }
-}
-
 - (void)timerLabelTick
 {
     self.timerLabel.text = [self timerLabelText];
+    [self.timerLabel sizeToFit];
 }
 
 - (NSString *)timerLabelText
 {
-    NSString *timeText = @"--:--";
-    if (self.refreshTimer.fireDate) {
-        NSTimeInterval interval = MAX(0.0, [self.refreshTimer.fireDate timeIntervalSinceNow]);
-        timeText = [NSString stringWithFormat:@"%lus", (unsigned long)interval];
+    if (self.dataController.fetching) {
+        return @"↺";
     }
+    else {
+        NSTimeInterval interval = self.dataController.timeUntilNextFetch;
+        NSString *timeText = [NSString stringWithFormat:@"%lus", (unsigned long)interval];
 
-    return [NSString stringWithFormat:@"↻ %@", timeText];
+        return [NSString stringWithFormat:@"↻ %@", timeText];
+    }
 }
 
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.tweets.count;
+    return self.dataController.tweets.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NIMTweetCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NIMTweetCell" forIndexPath:indexPath];
-    NIMTweet *tweet = self.tweets[indexPath.row];
+    NIMTweet *tweet = self.dataController.tweets[indexPath.row];
     [cell configureWithTweet:tweet
                  showAvatars:!self.settings.hideAvatars];
 
@@ -177,8 +115,15 @@ static NSTimeInterval const kTimerLabelRefreshInterval = 0.5;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NIMTweet *tweet = self.tweets[indexPath.row];
+    NIMTweet *tweet = self.dataController.tweets[indexPath.row];
     return [NIMTweetCell preferredHeightWithTweet:tweet width:CGRectGetWidth(tableView.bounds)];
+}
+
+#pragma mark - NIMTweetsDataControllerDelegate
+
+- (void)tweetsDataControllerDidChangeContents:(NIMTweetsDataController *)controller
+{
+    [self.tableView reloadData];
 }
 
 @end

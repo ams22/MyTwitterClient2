@@ -11,6 +11,7 @@
 		E338CADB1A3439CE00DDB2CD /* NIMFMDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = E338CADA1A3439CE00DDB2CD /* NIMFMDataSource.m */; };
 		E338CAE61A3464C200DDB2CD /* GCOAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = E338CAE21A3464C200DDB2CD /* GCOAuth.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
 		E338CAE71A3464C200DDB2CD /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = E338CAE41A3464C200DDB2CD /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
+		E338CAEB1A34CDAB00DDB2CD /* NIMTweetsDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = E338CAEA1A34CDAB00DDB2CD /* NIMTweetsDataController.m */; };
 		E3877EE31A3311F7000573FF /* NIMTweetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E3877EE21A3311F7000573FF /* NIMTweetCell.m */; };
 		E3BA465A1A32EE3D00047E61 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E3BA46591A32EE3D00047E61 /* main.m */; };
 		E3BA465D1A32EE3D00047E61 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E3BA465C1A32EE3D00047E61 /* AppDelegate.m */; };
@@ -48,6 +49,8 @@
 		E338CAE21A3464C200DDB2CD /* GCOAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCOAuth.m; sourceTree = "<group>"; };
 		E338CAE31A3464C200DDB2CD /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
 		E338CAE41A3464C200DDB2CD /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
+		E338CAE91A34CDAB00DDB2CD /* NIMTweetsDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIMTweetsDataController.h; sourceTree = "<group>"; };
+		E338CAEA1A34CDAB00DDB2CD /* NIMTweetsDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIMTweetsDataController.m; sourceTree = "<group>"; };
 		E3877EE11A3311F7000573FF /* NIMTweetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIMTweetCell.h; sourceTree = "<group>"; };
 		E3877EE21A3311F7000573FF /* NIMTweetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIMTweetCell.m; sourceTree = "<group>"; };
 		E3BA46541A32EE3D00047E61 /* MyTwitterClient2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyTwitterClient2.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,6 +117,8 @@
 			children = (
 				E3BA467D1A32F44C00047E61 /* NIMTweetsViewController.h */,
 				E3BA467E1A32F44C00047E61 /* NIMTweetsViewController.m */,
+				E338CAE91A34CDAB00DDB2CD /* NIMTweetsDataController.h */,
+				E338CAEA1A34CDAB00DDB2CD /* NIMTweetsDataController.m */,
 				E3BA46801A32F4D300047E61 /* NIMSettingsViewController.h */,
 				E3BA46811A32F4D300047E61 /* NIMSettingsViewController.m */,
 				E3877EE11A3311F7000573FF /* NIMTweetCell.h */,
@@ -359,6 +364,7 @@
 			files = (
 				E338CAD71A3351C700DDB2CD /* NIMSettings.m in Sources */,
 				E3BA465D1A32EE3D00047E61 /* AppDelegate.m in Sources */,
+				E338CAEB1A34CDAB00DDB2CD /* NIMTweetsDataController.m in Sources */,
 				E3BA467F1A32F44C00047E61 /* NIMTweetsViewController.m in Sources */,
 				E3BA468D1A3307BB00047E61 /* NIMUser.m in Sources */,
 				E3BA468A1A33073600047E61 /* NIMTweet.m in Sources */,
