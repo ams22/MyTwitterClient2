@@ -77,7 +77,13 @@
 
 + (instancetype)defaultDataSource
 {
-    return [[self alloc] initWithDatabasePath:[self defaultDatabasePath]];
+    static NIMFMDataSource *_defaultDataSource = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _defaultDataSource = [[self alloc] initWithDatabasePath:[self defaultDatabasePath]];
+    });
+
+    return _defaultDataSource;
 }
 
 - (instancetype)initWithDatabasePath:(NSString *)path
