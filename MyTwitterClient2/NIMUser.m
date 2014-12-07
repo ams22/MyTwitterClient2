@@ -33,6 +33,18 @@
     return copy;
 }
 
+- (BOOL)isEqual:(id)object
+{
+    if (self == object) return YES;
+    if (![object isKindOfClass:[NIMUser class]]) return NO;
+    return [self.idStr isEqualToString:[object idStr]];
+}
+
+- (NSUInteger)hash
+{
+    return [self.idStr hash];
+}
+
 - (NSString *)description
 {
     return [NSString stringWithFormat:@"NIMTweet %@ %@", self.idStr, self.screenName];

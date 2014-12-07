@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E338CAD71A3351C700DDB2CD /* NIMSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = E338CAD61A3351C700DDB2CD /* NIMSettings.m */; };
+		E338CADB1A3439CE00DDB2CD /* NIMFMDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = E338CADA1A3439CE00DDB2CD /* NIMFMDataSource.m */; };
 		E3877EE31A3311F7000573FF /* NIMTweetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E3877EE21A3311F7000573FF /* NIMTweetCell.m */; };
 		E3877F1C1A333B08000573FF /* Base64Transcoder.c in Sources */ = {isa = PBXBuildFile; fileRef = E3877EF51A333B08000573FF /* Base64Transcoder.c */; settings = {COMPILER_FLAGS = "-w"; }; };
 		E3877F1D1A333B08000573FF /* hmac.c in Sources */ = {isa = PBXBuildFile; fileRef = E3877EF71A333B08000573FF /* hmac.c */; settings = {COMPILER_FLAGS = "-w"; }; };
@@ -46,6 +47,8 @@
 		E338CACD1A333BF100DDB2CD /* OAuthTwitterCallbacks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthTwitterCallbacks.h; sourceTree = "<group>"; };
 		E338CAD51A3351C700DDB2CD /* NIMSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIMSettings.h; sourceTree = "<group>"; };
 		E338CAD61A3351C700DDB2CD /* NIMSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIMSettings.m; sourceTree = "<group>"; };
+		E338CAD91A3439CE00DDB2CD /* NIMFMDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIMFMDataSource.h; sourceTree = "<group>"; };
+		E338CADA1A3439CE00DDB2CD /* NIMFMDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIMFMDataSource.m; sourceTree = "<group>"; };
 		E3877EE11A3311F7000573FF /* NIMTweetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIMTweetCell.h; sourceTree = "<group>"; };
 		E3877EE21A3311F7000573FF /* NIMTweetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIMTweetCell.m; sourceTree = "<group>"; };
 		E3877EF51A333B08000573FF /* Base64Transcoder.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Base64Transcoder.c; sourceTree = "<group>"; };
@@ -253,6 +256,8 @@
 				E3BA468C1A3307BB00047E61 /* NIMUser.m */,
 				E338CAD51A3351C700DDB2CD /* NIMSettings.h */,
 				E338CAD61A3351C700DDB2CD /* NIMSettings.m */,
+				E338CAD91A3439CE00DDB2CD /* NIMFMDataSource.h */,
+				E338CADA1A3439CE00DDB2CD /* NIMFMDataSource.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -407,6 +412,7 @@
 				E3877F201A333B08000573FF /* NSString+URLEncoding.m in Sources */,
 				E3877F211A333B08000573FF /* OAuth.m in Sources */,
 				E3877F1C1A333B08000573FF /* Base64Transcoder.c in Sources */,
+				E338CADB1A3439CE00DDB2CD /* NIMFMDataSource.m in Sources */,
 				E3BA465A1A32EE3D00047E61 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
