@@ -63,13 +63,10 @@ static CGFloat const kAvatarWidth = 48.f;
     self.usernameLabel.text = [NSString stringWithFormat:@"@%@ at %@", tweet.user.screenName, [[[self class] dateFormatter] stringFromDate:tweet.createdAt]];
     self.tweetTextLabel.text = tweet.text;
 
-    if (showAvatars) {
-        self.avatarWidth.constant = kAvatarWidth;
-        [self.avatarImageView sd_setImageWithURL:tweet.user.profileImageURL];
-    }
-    else {
-        self.avatarWidth.constant = 0.f;
-    }
+    self.avatarWidth.constant = showAvatars ? kAvatarWidth : 0.f;
+    // Загружаем картинку независимо от настройки отображения аватара, чтобы она
+    // закэшировалась локально
+    [self.avatarImageView sd_setImageWithURL:tweet.user.profileImageURL];
 }
 
 + (CGFloat)preferredHeightWithTweet:(NIMTweet *)tweet width:(CGFloat)width

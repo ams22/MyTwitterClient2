@@ -10,12 +10,12 @@
 #import "NIMTweetCell.h"
 #import "NIMTwitterHTTPClient.h"
 #import "NIMTweet.h"
+#import "NIMUser.h"
 #import "NIMSettings.h"
 #import "NIMFMDataSource.h"
+#import <SDWebImage/SDWebImagePrefetcher.h>
 
-#warning <#message#>
-//static NSTimeInterval const kRefreshInterval = 60.0;
-static NSTimeInterval const kRefreshInterval = 15.0;
+static NSTimeInterval const kRefreshInterval = 60.0;
 static NSTimeInterval const kTimerLabelRefreshInterval = 0.5;
 
 @interface NIMTweetsViewController ()
@@ -109,6 +109,16 @@ static NSTimeInterval const kTimerLabelRefreshInterval = 0.5;
         if (tweets) {
             self.tweets = tweets;
             [self.dataSource storeCachedTweets:tweets completionBlock:nil];
+
+            // Сохраним в кэше все изображения, чтобы в оффлайне были видны даже
+            // те картинки, которые не подгрузились в ячейке, так как
+            // соответствующая ячейка не была отображена.
+
+            NSMutableSet *avatarURLs = [NSMutableSet set];
+            for (NIMTweet *tweet in tweets) {
+                [avatarURLs addObject:tweet.user.profileImageURL];
+            }
+            [[SDWebImagePrefetcher sharedImagePrefetcher] prefetchURLs:[avatarURLs allObjects]];
         }
 
         if ([self isViewLoaded] && self.view.window) {
