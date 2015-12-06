@@ -47,7 +47,12 @@
 {
     if (self = [super init]) {
         _idStr = [dictionary[@"id_str"] copy];
-        _createdAt = [[[self class] JSONDateFormatter] dateFromString:dictionary[@"created_at"]];
+
+        NSString *createdAt = dictionary[@"created_at"];
+        if (createdAt) {
+            _createdAt = [[[self class] JSONDateFormatter] dateFromString:createdAt];
+        }
+        
         _text = [dictionary[@"text"] copy];
         _user = [[NIMUser alloc] initWithJSONDictionary:dictionary[@"user"]];
     }
