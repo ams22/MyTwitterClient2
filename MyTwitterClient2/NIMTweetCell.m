@@ -12,7 +12,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 @import QuartzCore;
 
-static CGFloat const kAvatarWidth = 48.f;
+static CGFloat const kAvatarWidth = 48;
 
 @interface NIMTweetCell ()
 
@@ -31,9 +31,9 @@ static CGFloat const kAvatarWidth = 48.f;
 
     CALayer *imageLayer = self.avatarImageView.layer;
     imageLayer.masksToBounds = YES;
-    imageLayer.borderWidth = 1.f/[UIScreen mainScreen].scale;
-    imageLayer.borderColor = [UIColor colorWithWhite:0.5f alpha:0.5f].CGColor;
-    imageLayer.cornerRadius = 5.f;
+    imageLayer.borderWidth = 1.0/[UIScreen mainScreen].scale;
+    imageLayer.borderColor = [UIColor colorWithWhite:0.5 alpha:0.5].CGColor;
+    imageLayer.cornerRadius = 5;
 }
 
 - (void)prepareForReuse
@@ -63,7 +63,7 @@ static CGFloat const kAvatarWidth = 48.f;
     self.usernameLabel.text = [NSString stringWithFormat:@"@%@ at %@", tweet.user.screenName, [[[self class] dateFormatter] stringFromDate:tweet.createdAt]];
     self.tweetTextLabel.text = tweet.text;
 
-    self.avatarWidth.constant = showAvatars ? kAvatarWidth : 0.f;
+    self.avatarWidth.constant = showAvatars ? kAvatarWidth : 0;
     // Загружаем картинку независимо от настройки отображения аватара, чтобы она
     // закэшировалась локально
     [self.avatarImageView sd_setImageWithURL:tweet.user.profileImageURL];
@@ -72,18 +72,18 @@ static CGFloat const kAvatarWidth = 48.f;
 + (CGFloat)preferredHeightWithTweet:(NIMTweet *)tweet width:(CGFloat)width
 {
     // Эти параметры необходимо синхронизировать со сторибордом
-    CGRect textLabelFrame = CGRectMake(64.f, 28.f,
-                                       width - 64.f - 8.f, // отступ справа, отступ слева
-                                       320.f); // максимальная высота
+    CGRect textLabelFrame = CGRectMake(64, 28,
+                                       width - 64.0 - 8.0, // отступ справа, отступ слева
+                                       320); // максимальная высота
     NSMutableParagraphStyle *paragraphStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
     paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
-    NSDictionary *textAttributes = @{ NSFontAttributeName : [UIFont systemFontOfSize:13.f],
+    NSDictionary *textAttributes = @{ NSFontAttributeName : [UIFont systemFontOfSize:13],
                                       NSParagraphStyleAttributeName : paragraphStyle };
     CGRect boundingRect = [tweet.text boundingRectWithSize:textLabelFrame.size options:NSStringDrawingUsesLineFragmentOrigin attributes:textAttributes context:nil];
-    CGFloat height = (MAX(64.f, // высота аватара + отступы
+    CGFloat height = (MAX(64.0, // высота аватара + отступы
                           CGRectGetMinY(textLabelFrame) + CGRectGetHeight(boundingRect)
-                          + 8.f) // отступ от низа
-                      + 1.f); // разделитель ячеек
+                          + 8.0) // отступ от низа
+                      + 1.0); // разделитель ячеек
 
     return height;
 }
