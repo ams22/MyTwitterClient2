@@ -38,6 +38,23 @@
     return [NSString stringWithFormat:@"NIMTweet %@ %@", self.idStr, self.screenName];
 }
 
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    if (self = [super init]) {
+        _idStr = [aDecoder decodeObjectForKey:@"idStr"];
+        _name = [aDecoder decodeObjectForKey:@"name"];
+        _profileImageURL = [aDecoder decodeObjectForKey:@"profileImageURL"];
+        _screenName = [aDecoder decodeObjectForKey:@"screenName"];
+    }
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:self.idStr forKey:@"idStr"];
+    [aCoder encodeObject:self.name forKey:@"name"];
+    [aCoder encodeObject:self.profileImageURL forKey:@"profileImageURL"];
+    [aCoder encodeObject:self.screenName forKey:@"screenName"];
+}
+
 @end
 
 @implementation NIMUser (Parsing)

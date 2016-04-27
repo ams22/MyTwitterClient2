@@ -10,7 +10,7 @@
 
 @class NIMUser;
 
-@interface NIMTweet : NSObject <NSCopying>
+@interface NIMTweet : NSObject <NSCopying, NSCoding>
 
 @property (nonatomic, copy) NSString *idStr;
 @property (nonatomic, copy) NSDate *createdAt;

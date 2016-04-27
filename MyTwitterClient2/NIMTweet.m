@@ -39,6 +39,23 @@
     return [NSString stringWithFormat:@"NIMTweet %@ @%@ %@", self.idStr, self.user.screenName, self.text];
 }
 
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    if (self = [super init]) {
+        _idStr = [aDecoder decodeObjectForKey:NSStringFromSelector(@selector(idStr))];
+        _createdAt = [aDecoder decodeObjectForKey:@"createdAt"];
+        _text = [aDecoder decodeObjectForKey:@"text"];
+        _user = [aDecoder decodeObjectForKey:@"user"];
+    }
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:self.idStr forKey:NSStringFromSelector(@selector(idStr))];
+    [aCoder encodeObject:self.createdAt forKey:@"createdAt"];
+    [aCoder encodeObject:self.text forKey:@"text"];
+    [aCoder encodeObject:self.user forKey:@"user"];
+}
+
 @end
 
 @implementation NIMTweet (Parsing)

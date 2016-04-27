@@ -29,19 +29,25 @@
 
 #pragma mark - Public Interface
 
+- (NSString *)cacheFilename {
+    return [NSTemporaryDirectory() stringByAppendingPathComponent:@"tweets-cache"];
+}
+
 - (void)fetchCachedTweets:(NIMFMDataSourceTweetsResultsBlock)resultsBlock
 {
     if (!resultsBlock) {
         return;
     }
-    resultsBlock(@[], nil);
+    NSArray *tweets = [NSKeyedUnarchiver unarchiveObjectWithFile:[self cacheFilename]];
+    resultsBlock(tweets, nil);
 }
 
 - (void)storeCachedTweets:(NSArray *)tweets
           completionBlock:(NIMFMDataSourceUpdateCompletionBlock)completionBlock
 {
+    BOOL saved = [NSKeyedArchiver archiveRootObject:tweets toFile:[self cacheFilename]];
     if (completionBlock) {
-        completionBlock(YES, nil);
+        completionBlock(saved, nil);
     }
 }
 

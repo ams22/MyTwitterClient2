@@ -8,7 +8,7 @@
 
 @import Foundation;
 
-@interface NIMUser : NSObject <NSCopying>
+@interface NIMUser : NSObject <NSCopying, NSCoding>
 
 @property (nonatomic, copy) NSString *idStr;
 @property (nonatomic, copy) NSString *name;
