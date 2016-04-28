@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		85EA05201CD133490051FA23 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 85EA051E1CD133490051FA23 /* Model.xcdatamodeld */; };
+		85EA05291CD1359E0051FA23 /* CDTweet+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 85EA05221CD1359E0051FA23 /* CDTweet+CoreDataProperties.m */; };
+		85EA052A1CD1359E0051FA23 /* CDTweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 85EA05241CD1359E0051FA23 /* CDTweet.m */; };
+		85EA052B1CD1359E0051FA23 /* CDUser+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 85EA05261CD1359E0051FA23 /* CDUser+CoreDataProperties.m */; };
+		85EA052C1CD1359E0051FA23 /* CDUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 85EA05281CD1359E0051FA23 /* CDUser.m */; };
 		E338CAD71A3351C700DDB2CD /* NIMSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = E338CAD61A3351C700DDB2CD /* NIMSettings.m */; };
 		E338CADB1A3439CE00DDB2CD /* NIMFMDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = E338CADA1A3439CE00DDB2CD /* NIMFMDataSource.m */; };
 		E338CAE61A3464C200DDB2CD /* GCOAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = E338CAE21A3464C200DDB2CD /* GCOAuth.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
@@ -40,6 +45,15 @@
 /* Begin PBXFileReference section */
 		12327006E00FEE1C26AEDB64 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		362B4246287275EDA8CE542A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		85EA051F1CD133490051FA23 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		85EA05211CD1359E0051FA23 /* CDTweet+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CDTweet+CoreDataProperties.h"; sourceTree = "<group>"; };
+		85EA05221CD1359E0051FA23 /* CDTweet+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CDTweet+CoreDataProperties.m"; sourceTree = "<group>"; };
+		85EA05231CD1359E0051FA23 /* CDTweet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDTweet.h; sourceTree = "<group>"; };
+		85EA05241CD1359E0051FA23 /* CDTweet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDTweet.m; sourceTree = "<group>"; };
+		85EA05251CD1359E0051FA23 /* CDUser+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CDUser+CoreDataProperties.h"; sourceTree = "<group>"; };
+		85EA05261CD1359E0051FA23 /* CDUser+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CDUser+CoreDataProperties.m"; sourceTree = "<group>"; };
+		85EA05271CD1359E0051FA23 /* CDUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDUser.h; sourceTree = "<group>"; };
+		85EA05281CD1359E0051FA23 /* CDUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDUser.m; sourceTree = "<group>"; };
 		A41F2F2F9CAB1B5FDB3ED6A5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E338CAD51A3351C700DDB2CD /* NIMSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIMSettings.h; sourceTree = "<group>"; };
 		E338CAD61A3351C700DDB2CD /* NIMSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIMSettings.m; sourceTree = "<group>"; };
@@ -222,6 +236,15 @@
 				E338CAD61A3351C700DDB2CD /* NIMSettings.m */,
 				E338CAD91A3439CE00DDB2CD /* NIMFMDataSource.h */,
 				E338CADA1A3439CE00DDB2CD /* NIMFMDataSource.m */,
+				85EA051E1CD133490051FA23 /* Model.xcdatamodeld */,
+				85EA05211CD1359E0051FA23 /* CDTweet+CoreDataProperties.h */,
+				85EA05221CD1359E0051FA23 /* CDTweet+CoreDataProperties.m */,
+				85EA05231CD1359E0051FA23 /* CDTweet.h */,
+				85EA05241CD1359E0051FA23 /* CDTweet.m */,
+				85EA05251CD1359E0051FA23 /* CDUser+CoreDataProperties.h */,
+				85EA05261CD1359E0051FA23 /* CDUser+CoreDataProperties.m */,
+				85EA05271CD1359E0051FA23 /* CDUser.h */,
+				85EA05281CD1359E0051FA23 /* CDUser.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -381,16 +404,21 @@
 				E338CAD71A3351C700DDB2CD /* NIMSettings.m in Sources */,
 				E3BA465D1A32EE3D00047E61 /* AppDelegate.m in Sources */,
 				E338CAEB1A34CDAB00DDB2CD /* NIMTweetsDataController.m in Sources */,
+				85EA05201CD133490051FA23 /* Model.xcdatamodeld in Sources */,
+				85EA052A1CD1359E0051FA23 /* CDTweet.m in Sources */,
 				E3BA467F1A32F44C00047E61 /* NIMTweetsViewController.m in Sources */,
 				E3BA468D1A3307BB00047E61 /* NIMUser.m in Sources */,
+				85EA052C1CD1359E0051FA23 /* CDUser.m in Sources */,
 				E3BA468A1A33073600047E61 /* NIMTweet.m in Sources */,
 				E3BA46821A32F4D300047E61 /* NIMSettingsViewController.m in Sources */,
 				E3BA46861A32FC4600047E61 /* NIMTwitterHTTPClient.m in Sources */,
+				85EA052B1CD1359E0051FA23 /* CDUser+CoreDataProperties.m in Sources */,
 				E3877EE31A3311F7000573FF /* NIMTweetCell.m in Sources */,
 				E338CAE61A3464C200DDB2CD /* GCOAuth.m in Sources */,
 				E338CADB1A3439CE00DDB2CD /* NIMFMDataSource.m in Sources */,
 				E3BA465A1A32EE3D00047E61 /* main.m in Sources */,
 				E338CAE71A3464C200DDB2CD /* NSData+Base64.m in Sources */,
+				85EA05291CD1359E0051FA23 /* CDTweet+CoreDataProperties.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -624,6 +652,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		85EA051E1CD133490051FA23 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				85EA051F1CD133490051FA23 /* Model.xcdatamodel */,
+			);
+			currentVersion = 85EA051F1CD133490051FA23 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = E3BA464C1A32EE3D00047E61 /* Project object */;
 }

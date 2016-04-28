@@ -13,6 +13,10 @@
 #import "NIMUser.h"
 #import <SDWebImage/SDWebImagePrefetcher.h>
 #import <SDWebImage/SDWebImageManager.h>
+#import "AppDelegate.h"
+#import <CoreData/CoreData.h>
+#import "CDUser+CoreDataProperties.h"
+#import "CDTweet+CoreDataProperties.h"
 
 static NSTimeInterval const kRefreshInterval = 60.0;
 
@@ -56,14 +60,23 @@ static NSTimeInterval const kRefreshInterval = 60.0;
     self.updating = YES;
 
     // Сначала покажем закэшированное
-    [self.dataSource fetchCachedTweets:^(NSArray *tweets, NSError *error) {
-        if (tweets) {
-            self.tweets = tweets;
-        }
 
-        // Потом попробуем загрузить по сети
-        [self refreshTweets];
-    }];
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Tweet"];
+    request.predicate = [NSPredicate predicateWithFormat:@"text LIKE iOS"];
+
+    NSArray *tweets = [context executeFetchRequest:request error:NULL];
+
+//    [self.dataSource fetchCachedTweets:^(NSArray *tweets, NSError *error) {
+//        if (tweets) {
+//            self.tweets = tweets;
+//        }
+//
+//        // Потом попробуем загрузить по сети
+//        [self refreshTweets];
+//    }];
 }
 
 - (void)stopUpdating
